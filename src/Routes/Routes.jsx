@@ -200,6 +200,9 @@ import DietPlan from '../Pages/Home/Login/GymProfile/DietPlan';
 import Performance from '../Pages/Home/Login/GymProfile/Performance';
 import AccountSettings from '../Pages/Home/Login/GymProfile/AccountSettings';
 import MembershipPayment from '../Pages/Home/Membership/MEmbershipPayment';
+import CoachRegistration from '../Pages/Home/Registration/Coach/CoachRegistration';
+import GymRegistration from '../Pages/Home/Registration/Gym/GymRegistration';
+import ChampRegistration from '../Pages/Home/Registration/Champ/ChampRegistration';
 
 
 const router = createBrowserRouter([
@@ -290,6 +293,9 @@ const router = createBrowserRouter([
       { path: '/program/:id', element: <ProgramDetails /> },
       { path: '/app', element: <App /> },
       { path: '/MembershipPayment', element: <MembershipPayment /> },
+      { path: '/CoachRegistration', element: <CoachRegistration /> },
+      { path: '/GymRegistration', element: <GymRegistration /> },
+      { path: '/ChampRegistration', element: <ChampRegistration /> },
     ],
   },
 ]);

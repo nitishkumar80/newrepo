@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
@@ -7,6 +6,7 @@ import logo from "../../../assets/logo/logo2.png";
 import rlogo from "../../../assets/logo/logoN.png";
 import useReadingProgress from "../../../Hooks/useReadingProgress";
 import './nav.css';
+
 const Navbar = ({ setSearchQuery }) => {
   const user = null;
   const [activeNav, setActiveNav] = useState("#home");
@@ -14,6 +14,7 @@ const Navbar = ({ setSearchQuery }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [navbarBg, setNavbarBg] = useState("transparent");
   const [searchInput, setSearchInput] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   /* Control navbar background */
   useEffect(() => {
@@ -36,10 +37,24 @@ const Navbar = ({ setSearchQuery }) => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  /* Handle search submit */
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    setSearchQuery(searchInput); // Send the search input back to the parent component
+  const handleChampRegistration = () => {
+    window.open("/ChampRegistration", "_blank");
+    setDropdownOpen(false); // Close dropdown after clicking the link
+  };
+
+  const handleCoachRegistration = () => {
+    window.open("/CoachRegistration", "_blank");
+    setDropdownOpen(false); // Close dropdown after clicking the link
+  };
+
+  const handleGymRegistration = () => {
+    window.open("/GymRegistration", "_blank");
+    setDropdownOpen(false); // Close dropdown after clicking the link
+  };
+
+  /* Toggle dropdown */
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
   };
 
   const navOptions = (
@@ -55,8 +70,6 @@ const Navbar = ({ setSearchQuery }) => {
         </Link>
       </li>
 
-
-
       <li>
         <Link to={"/about"}>
           <a
@@ -67,6 +80,7 @@ const Navbar = ({ setSearchQuery }) => {
           </a>
         </Link>
       </li>
+
       <li>
         <Link to={"/programmer"}>
           <a
@@ -77,14 +91,14 @@ const Navbar = ({ setSearchQuery }) => {
           </a>
         </Link>
       </li>
-     
+
       <li>
         <Link to={"/service"}>
           <a
             className={activeNav === "#service" ? " active_link" : ""}
             onClick={() => setActiveNav("#service")}
           >
-           Service
+            Service
           </a>
         </Link>
       </li>
@@ -95,7 +109,7 @@ const Navbar = ({ setSearchQuery }) => {
             className={activeNav === "#Membership" ? " active_link" : ""}
             onClick={() => setActiveNav("#Membership")}
           >
-  Membership
+            Membership
           </a>
         </Link>
       </li>
@@ -106,22 +120,10 @@ const Navbar = ({ setSearchQuery }) => {
             className={activeNav === "#blogs" ? " active_link" : ""}
             onClick={() => setActiveNav("#blogs")}
           >
-         Blogs
+            Blogs
           </a>
         </Link>
       </li>
-
-
-
-
-
-
-
-     
-
-
-     
-
 
       <li>
         <Link to={"/contact"}>
@@ -133,6 +135,7 @@ const Navbar = ({ setSearchQuery }) => {
           </a>
         </Link>
       </li>
+
       {user ? (
         <>
           <li>
@@ -162,6 +165,56 @@ const Navbar = ({ setSearchQuery }) => {
             >
               <Link to="/login">Login</Link>
             </a>
+          </li>
+
+          <li className="relative">
+            <button
+              className="flex items-center justify-between text-sm font-medium text-left text-white-700 dark:bg-gray-800 dark:text-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-opacity-75"
+              onClick={toggleDropdown}
+            >
+              Registration
+              <svg
+                className="w-5 h-5 ml-2 -mr-1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.293 7.707a1 1 0 011.414 0L10 11.414l3.293-3.707a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            {dropdownOpen && (
+              <ul className="absolute left-0 w-48 py-2 mt-2 space-y-2 bg-white border rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600">
+                <li>
+                  <a
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
+                    onClick={handleChampRegistration}
+                  >
+                    Champ Registration
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
+                    onClick={handleCoachRegistration}
+                  >
+                    Coach Registration
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
+                    onClick={handleGymRegistration}
+                  >
+                    Gym Registration
+                  </a>
+                </li>
+              </ul>
+            )}
           </li>
         </>
       )}
@@ -255,23 +308,6 @@ const Navbar = ({ setSearchQuery }) => {
               ></motion.span>
             </div>
           </div>
-          {/* Search bar */}
-          {/* <form onSubmit={handleSearchSubmit} className="flex items-center ml-4">
-          <input
-  type="text"
-  className="input input-bordered w-full max-w-xs h-12 sm:h-10 dark:bg-gray-700 dark:text-white"
-  placeholder="Search programs..."
-  value={searchInput}
-  onChange={(e) => setSearchInput(e.target.value)}
-/>
-
-            <button
-              type="submit"
-              className="ml-1 btn bg-amber-500 hover:bg-amber-600 text-white"
-            >
-              Search
-            </button>
-          </form> */}
         </div>
         <span
           className="absolute bg-gradient-to-r from-red-500 via-yellow-500 to-transparent h-1 w-full bottom-0"

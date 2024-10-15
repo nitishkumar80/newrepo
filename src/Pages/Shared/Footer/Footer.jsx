@@ -21,7 +21,7 @@ const Footer = () => {
         <aside>
           <img loading="lazy" className="w-36 md:w-44" src={logo} />
           <p className="-mt-3 ps-3.5 text-sm font-semibold text-slate-300 dark:text-white">
-          Future of sports training
+            Future of sports training
           </p>
           <div className="flex justify-center space-x-4 mt-5 py-4">
             <Link to="#">
@@ -48,11 +48,11 @@ const Footer = () => {
           <div className="flex flex-col space-y-3 text-base text-white">
             <p className="flex items-center gap-1">
               <FaMapMarkerAlt />
-            Daladali Chowk
+              Daladali Chowk
             </p>
             <p className="flex items-center gap-1">
               <FaPhoneAlt />
-               +91 92052 90015
+              +91 92052 90015
             </p>
             <p className="flex items-center gap-1">
               <FaHeadset />
@@ -70,15 +70,9 @@ const Footer = () => {
           </header>
           <div className="flex flex-col space-y-3 text-base text-white">
             <Link className="link link-hover hover:text-amber-500">Home</Link>
-            <Link className="link link-hover hover:text-amber-500">
-              About Us
-            </Link>
-            <Link className="link link-hover hover:text-amber-500">
-              Programmes
-            </Link>
-            <Link className="link link-hover hover:text-amber-500">
-              Instructors
-            </Link>
+            <Link className="link link-hover hover:text-amber-500">About Us</Link>
+            <Link className="link link-hover hover:text-amber-500">Programmes</Link>
+            <Link className="link link-hover hover:text-amber-500">Instructors</Link>
           </div>
         </nav>
         <form>
@@ -87,9 +81,7 @@ const Footer = () => {
           </header>
           <fieldset className="form-control w-80">
             <label className="label">
-              <span className="text-base text-white">
-                Enter your email address
-              </span>
+              <span className="text-base text-white">Enter your email address</span>
             </label>
             <div className="relative">
               <input
@@ -97,7 +89,7 @@ const Footer = () => {
                 placeholder="arskreedashala.com"
                 className="input input-bordered w-full bg-white"
               />
-              <button className="btn bg-amber-500 hover:bg-amber-600 text-white absolute top-0 right-0 rounded-l-none border-2 border-amber-500 hover:border-amber-600 ">
+              <button className="btn bg-amber-500 hover:bg-amber-600 text-white absolute top-0 right-0 rounded-l-none border-2 border-amber-500 hover:border-amber-600">
                 Subscribe
               </button>
             </div>
@@ -105,7 +97,18 @@ const Footer = () => {
         </form>
       </footer>
       <div className="footer-center p-6 bg-gray-800 dark:bg-gray-900 text-slate-300 border-t border-slate-500 text-sm">
-        <p>Copyright © {year} - All right reserved</p>
+        <p>Copyright © {year} - All rights reserved</p>
+        <div className="flex justify-center space-x-4 mt-3">
+          <Link className="link link-hover text-slate-300 hover:text-white">Privacy Policy</Link>
+          <span>|</span>
+          <Link className="link link-hover text-slate-300 hover:text-white">Terms of Use</Link>
+          <span>|</span>
+          <Link className="link link-hover text-slate-300 hover:text-white">Disclaimer</Link>
+          <span>|</span>
+          <Link className="link link-hover text-slate-300 hover:text-white">Shipping & Delivery Policy</Link>
+          <span>|</span>
+          <Link className="link link-hover text-slate-300 hover:text-white">Refund & Cancellation Policy</Link>
+        </div>
       </div>
     </div>
   );
