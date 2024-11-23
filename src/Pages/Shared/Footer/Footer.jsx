@@ -17,69 +17,60 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <div>
-      <footer className="footer  py-14 px-10 bg-gray-800 dark:bg-gray-900 text-base-content">
-        <aside>
-          <img loading="lazy" className="w-36 md:w-44" src={logo} />
-          <p className="-mt-3 ps-3.5 text-sm font-semibold text-slate-300 dark:text-white">
+      <footer className="footer flex flex-wrap py-14 px-5 md:px-10 bg-gray-800 dark:bg-gray-900 text-base-content">
+        <aside className="flex-1 mb-8 md:mb-0">
+          <img loading="lazy" className="w-24 md:w-36 lg:w-44" src={logo} alt="Logo" />
+          <p className="mt-3 text-center md:text-left text-sm font-semibold text-slate-300 dark:text-white">
             Future of sports training
           </p>
-          <div className="flex justify-center space-x-4 mt-5 py-4">
-            <Link to="#">
-              <img className="w-8" src={facebook} alt="" />
-            </Link>
-            <Link to="#">
-              <img className="w-8" src={instagram} alt="" />
-            </Link>
-            <Link to="#">
-              <img className="w-8" src={whatsapp} alt="" />
-            </Link>
-            <Link to="#">
-              <img className="w-8" src={linkedin} alt="" />
-            </Link>
-            <Link to="#">
-              <img className="w-8" src={youtube} alt="" />
-            </Link>
+          <div className="flex justify-center md:justify-start space-x-4 mt-5 py-4">
+            {[facebook, instagram, whatsapp, linkedin, youtube].map((icon, index) => (
+              <Link to="#" key={index}>
+                <img className="w-8" src={icon} alt="Social Icon" />
+              </Link>
+            ))}
           </div>
         </aside>
-        <nav>
-          <header className="font-bold text-xl mb-3 text-white">
+        <nav className="flex-1 mb-8 md:mb-0">
+          <header className="font-bold text-xl mb-3 text-white text-center md:text-left">
             Contact Us
           </header>
-          <div className="flex flex-col space-y-3 text-base text-white">
-            <p className="flex items-center gap-1">
+          <div className="flex flex-col items-center md:items-start space-y-3 text-base text-white">
+            <p className="flex items-center gap-2">
               <FaMapMarkerAlt />
               Daladali Chowk
             </p>
-            <p className="flex items-center gap-1">
+            <p className="flex items-center gap-2">
               <FaPhoneAlt />
               +91 92052 90015
             </p>
-            <p className="flex items-center gap-1">
+            <p className="flex items-center gap-2">
               <FaHeadset />
               +91 92052 90015
             </p>
-            <p className="flex items-center gap-1">
+            <p className="flex items-center gap-2">
               <FaEnvelope />
               support@arskreedashala.com
             </p>
           </div>
         </nav>
-        <nav>
-          <header className="font-bold text-xl mb-3 text-white">
+        <nav className="flex-1 mb-8 md:mb-0">
+          <header className="font-bold text-xl mb-3 text-white text-center md:text-left">
             Quick Links
           </header>
-          <div className="flex flex-col space-y-3 text-base text-white">
-            <Link className="link link-hover hover:text-amber-500">Home</Link>
-            <Link className="link link-hover hover:text-amber-500">About Us</Link>
-            <Link className="link link-hover hover:text-amber-500">Programmes</Link>
-            <Link className="link link-hover hover:text-amber-500">Instructors</Link>
+          <div className="flex flex-col items-center md:items-start space-y-3 text-base text-white">
+            {["Home", "About Us", "Programmes", "Instructors"].map((link, index) => (
+              <Link key={index} className="link link-hover hover:text-amber-500">
+                {link}
+              </Link>
+            ))}
           </div>
         </nav>
-        <form>
-          <header className="font-bold text-xl mb-3 text-white">
+        <form className="flex-1">
+          <header className="font-bold text-xl mb-3 text-white text-center md:text-left">
             Newsletter
           </header>
-          <fieldset className="form-control w-80">
+          <fieldset className="form-control w-full md:w-80 mx-auto md:mx-0">
             <label className="label">
               <span className="text-base text-white">Enter your email address</span>
             </label>
@@ -97,17 +88,20 @@ const Footer = () => {
         </form>
       </footer>
       <div className="footer-center p-6 bg-gray-800 dark:bg-gray-900 text-slate-300 border-t border-slate-500 text-sm">
-        <p>Copyright © {year} - All rights reserved</p>
-        <div className="flex justify-center space-x-4 mt-3">
-          <Link className="link link-hover text-slate-300 hover:text-white">Privacy Policy</Link>
-          <span>|</span>
-          <Link className="link link-hover text-slate-300 hover:text-white">Terms of Use</Link>
-          <span>|</span>
-          <Link className="link link-hover text-slate-300 hover:text-white">Disclaimer</Link>
-          <span>|</span>
-          <Link className="link link-hover text-slate-300 hover:text-white">Shipping & Delivery Policy</Link>
-          <span>|</span>
-          <Link className="link link-hover text-slate-300 hover:text-white">Refund & Cancellation Policy</Link>
+        <p className="text-center">Copyright © {year} - All rights reserved</p>
+        <div className="flex flex-wrap justify-center space-x-2 mt-3">
+          {[
+            "Privacy Policy",
+            "Terms of Use",
+            "Disclaimer",
+            "Shipping & Delivery Policy",
+            "Refund & Cancellation Policy",
+          ].map((item, index) => (
+            <React.Fragment key={index}>
+              <Link className="link link-hover text-slate-300 hover:text-white">{item}</Link>
+              {index < 4 && <span>|</span>}
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </div>
